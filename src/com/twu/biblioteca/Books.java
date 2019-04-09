@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Books {
-    String books;
 
     public void printOneBook() {
         String books = "The Lord of the Rings";
