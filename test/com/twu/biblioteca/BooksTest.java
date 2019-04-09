@@ -4,20 +4,28 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class BibliotecaAppTest {
+public class BooksTest {
 
     @Test
-    public void shouldDisplayWelcomeMessage() {
+    public void shouldDisplayABook() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\n";
+        String expectedString = "The Lord of the Rings";
 
-        BibliotecaApp app = new BibliotecaApp();
-        app.main(null);
+        Books book = new Books();
+        book.booksAvailable();
 
         assertEquals(expectedString, outContent.toString());
+
     }
+
+
+
 }
