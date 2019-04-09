@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class BooksTest {
@@ -20,9 +22,24 @@ public class BooksTest {
         String expectedString = "The Lord of the Rings";
 
         Books book = new Books();
-        book.booksAvailable();
+        book.printOneBook();
 
         assertEquals(expectedString, outContent.toString());
+
+    }
+
+    @Test
+    public void shouldDisplayAListOfBooks() {
+        List<String> expectedList = new ArrayList();
+        expectedList.add("The Lord of the Rings");
+        expectedList.add("Metamorphosis");
+        expectedList.add("The Cat in the Hat");
+
+        Books book = new Books();
+        List<String> listOfBooks = book.listOfBooksAvailable();
+
+        assertThat(listOfBooks, is(expectedList));
+
 
     }
 
