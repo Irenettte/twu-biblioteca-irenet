@@ -6,15 +6,12 @@ public class Book {
     private int yearPublished = 1954;
 
     //setters
-    public void setBookTitle(String title){
+    public void setTitleAuthorYear(String title, String author, int yearPublished){
         this.title = title;
-    }
-    public void setBookAuthor(String author){
         this.author = author;
-    }
-    public void setBookYearPublished(int yearPublished){
         this.yearPublished = yearPublished;
     }
+
 
     //getters
     public String getBookTitle(){

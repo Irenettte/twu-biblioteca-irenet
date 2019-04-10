@@ -42,6 +42,18 @@ public class BibliotecaAppTest {
 
         assertEquals(expectedString, outContent.toString());
     }
+    @Test
+    public void shouldDisplayWelcomeMessageAndListBooksWithAuthorAndYearPublished() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\nThe Lord of the Rings\tJ.R.R. Tolkien\t1954\nThe Metamorphosis\tFranz Kafka\t1915\n";
+
+        BibliotecaApp app = new BibliotecaApp();
+        app.main(null);
+
+        assertEquals(expectedString, outContent.toString());
+    }
+
 
 
 }
