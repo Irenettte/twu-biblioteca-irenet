@@ -1,9 +1,9 @@
 package com.twu.biblioteca;
 
 public class Book {
-    public String title = "The Lord of the Rings";
-    public String author = "J.R.R Tolkien";
-    public int yearPublished = 1954;
+    private String title = "The Lord of the Rings";
+    private String author = "J.R.R. Tolkien";
+    private int yearPublished = 1954;
 
     //setters
     public void setBookTitle(String title){
@@ -26,6 +26,12 @@ public class Book {
     }
     public int getYearPublished(){
         return yearPublished;
+    }
+
+    public String displayTitleAuthorYear(){
+        String book = String.format(title + "\t" + author + "\t" + yearPublished);
+        System.out.println(book);
+        return book;
     }
 
 

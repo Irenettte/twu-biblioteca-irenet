@@ -7,12 +7,12 @@ import static org.hamcrest.core.Is.is;
 public class BookTest {
 
     @Test
-    public void shouldGetBookTitle() {
-        String expectedTitle = "The Lord of the Rings";
+    public void shouldGetBookTitleAuthorYear() {
+        String expectedString = "The Lord of the Rings\tJ.R.R. Tolkien\t1954";
         Book book1 = new Book();
-        String title = book1.getBookTitle();
+        String bookFeatures = book1.displayTitleAuthorYear();
 
-        assertThat(title, is(expectedTitle));
+        assertThat(bookFeatures, is(expectedString));
 
     }
 }
