@@ -24,4 +24,20 @@ public class ControllerTest {
         assertThat(outContent.toString(), is(expectedString));
     }
 
+    @Test
+    public void shouldDisplayOptionBookListAndWhenInvalidOptionDisplayErrorMessage() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        String invalidOption = "Please select a valid option!\n";
+        String expectedString = "<Biblioteca Menu Options>\n<1> List of Books\nType the option from the menu (e.g. 1 for Option 1): \n" + invalidOption;
+
+
+        Controller control = new Controller();
+        control.displayBibliotecaMenu();
+        control.chooseOption();
+
+        assertThat(outContent.toString(), is(expectedString));
+    }
+
 }

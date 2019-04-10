@@ -13,7 +13,5 @@ public class BibliotecaApp {
         control.displayBibliotecaMenu();
         control.chooseOption();
 
-
-
     }
 }

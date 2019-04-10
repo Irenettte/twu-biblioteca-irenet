@@ -19,8 +19,8 @@ public class Controller {
 
         System.out.println(chooseOption);
 
-//        int optionUser = scanUser.nextInt();
-        int optionUser = 1;
+        int optionUser = scanUser.nextInt();
+//        int optionUser = 2; //Use only to test
 
         if (optionUser == 1){
             Book book1 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1954);
@@ -28,6 +28,11 @@ public class Controller {
 
             book1.displayTitleAuthorYear();
             book2.displayTitleAuthorYear();
+        } else {
+            String invalidOption = "Please select a valid option!";
+
+            System.out.println(invalidOption);
+            this.chooseOption();
         }
 
     }
