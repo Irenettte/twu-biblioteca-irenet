@@ -6,31 +6,29 @@ import java.util.List;
 
 public class Library {
 
-    public List<String> listOfBooks = new ArrayList<String>();
-
+    private List<Book> listOfBooks;
 
     //constructor
-    public Library(List<String> listOfBooks) {
+    public Library(List<Book> listOfBooks) {
         this.listOfBooks = listOfBooks;
     }
     public Library(){
-        this.listOfBooks = listOfBooks;
+        this.listOfBooks = new ArrayList<Book>();
     }
 
-
     //method to Add Book
-    public void addBook(String book1){
+    public void addBook(Book book1){
         listOfBooks.add(book1);
     }
 
-    public void deleteBook(String book1){
+    public void deleteBook(Book book1){
         listOfBooks.remove(book1);
 
     }
 
     public void displayBookList(){
 
-        for (String books : listOfBooks) System.out.println(books);
+        for (Book books : listOfBooks) System.out.println(books.displayTitleAuthorYear());
 
     }
 }

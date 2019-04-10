@@ -15,40 +15,33 @@ public class ControllerTest {
         System.setOut(new PrintStream(outContent));
 
         String expectedString = "<Biblioteca Menu Options>\n<1> List of Books\nType the option from the menu (e.g. 1 for Option 1): \nThe Lord of the Rings\tJ.R.R. Tolkien\t1954\nThe Metamorphosis\tFranz Kafka\t1915\n";
+        Library library = new Library();
 
-
-        Controller control = new Controller();
+        Controller control = new Controller(library);
         control.displayBibliotecaMenu();
         control.chooseOption();
 
         assertThat(outContent.toString(), is(expectedString));
     }
-
     @Test
     public void shouldDisplayOptionBookListAndWhenInvalidOptionDisplayErrorMessage() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+        Library library = new Library();
 
         String invalidOption = "Please select a valid option!\n";
         String expectedString = "<Biblioteca Menu Options>\n<1> List of Books\nType the option from the menu (e.g. 1 for Option 1): \n" + invalidOption;
 
 
-        Controller control = new Controller();
+        Controller control = new Controller(library);
         control.displayBibliotecaMenu();
         control.chooseOption();
 
         assertThat(outContent.toString(), is(expectedString));
     }
     @Test
-    public void shouldQuitProgramWhenInputUserIs2() {
-        int fakeInputUser = 2;
-
-        Controller control = new Controller();
-        control.exitProgram();
-
-
-
-
+    public void shouldRemoveBookFromListOfAvailableBooksWhenUserChecksItOut(){
+        String expectedString = "";
     }
 
 }
