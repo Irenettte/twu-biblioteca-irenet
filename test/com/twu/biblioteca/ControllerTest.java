@@ -39,5 +39,16 @@ public class ControllerTest {
 
         assertThat(outContent.toString(), is(expectedString));
     }
+    @Test
+    public void shouldQuitProgramWhenInputUserIs2() {
+        int fakeInputUser = 2;
+
+        Controller control = new Controller();
+        control.exitProgram();
+
+
+
+
+    }
 
 }

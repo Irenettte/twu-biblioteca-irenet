@@ -6,33 +6,31 @@ import java.util.List;
 
 public class Library {
 
-//    private List<String> listOfBooks;
-//
-//    //constructor
-//    public Library(List<String> listOfBooks) {
-//        this.listOfBooks = listOfBooks;
-//    }
-//
-//
-//    //method to Add Book
-//    public void addBook(String book1){
-//
-//
-//    }
-//
-//    public void deleteBook(String book1){
-//
-//
-//    }
+    public List<String> listOfBooks = new ArrayList<String>();
 
 
+    //constructor
+    public Library(List<String> listOfBooks) {
+        this.listOfBooks = listOfBooks;
+    }
+    public Library(){
+        this.listOfBooks = listOfBooks;
+    }
 
-//    public void displayBookList(String bookList){
-//
-//        for (String books : bookList){
-//        System.out.println(books);
-//        }
-//
-//
-//    }
+
+    //method to Add Book
+    public void addBook(String book1){
+        listOfBooks.add(book1);
+    }
+
+    public void deleteBook(String book1){
+        listOfBooks.remove(book1);
+
+    }
+
+    public void displayBookList(){
+
+        for (String books : listOfBooks) System.out.println(books);
+
+    }
 }

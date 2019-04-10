@@ -33,7 +33,7 @@ public class Book {
 
     public String displayTitleAuthorYear(){
         String book = title + "\t" + author + "\t" + yearPublished;
-        System.out.println(book);
+//        System.out.println(book);
         return book;
     }
 
