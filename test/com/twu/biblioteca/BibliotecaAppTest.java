@@ -6,52 +6,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.is;
 
 public class BibliotecaAppTest {
 
+
     @Test
-    public void shouldDisplayWelcomeMessage() {
+    public void shouldDisplayWelcomeMessageAndOption1ListOfBooks() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\n";
+        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\n<Biblioteca Menu Options>\n<1> List of Books\n";
 
         BibliotecaApp app = new BibliotecaApp();
         app.main(null);
 
-        assertEquals(expectedString, outContent.toString());
-    }
-    @Test
-    public void shouldDisplayWelcomeMessageAndBook() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\nThe Lord of the Rings\n";
-
-        BibliotecaApp app = new BibliotecaApp();
-        app.main(null);
-
-        assertEquals(expectedString, outContent.toString());
-    }
-    @Test
-    public void shouldDisplayWelcomeMessageAndListBooks() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\n[The Lord of the Rings, The Metamorphosis]\n";
-
-        BibliotecaApp app = new BibliotecaApp();
-        app.main(null);
-
-        assertEquals(expectedString, outContent.toString());
-    }
-    @Test
-    public void shouldDisplayWelcomeMessageAndListBooksWithAuthorAndYearPublished() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        String expectedString = "Welcome to Biblioteca. You are one-stop-shop away from great book titles in Bangalore!\nThe Lord of the Rings\tJ.R.R. Tolkien\t1954\nThe Metamorphosis\tFranz Kafka\t1915\n";
-
-        BibliotecaApp app = new BibliotecaApp();
-        app.main(null);
-
-        assertEquals(expectedString, outContent.toString());
+        assertThat(outContent.toString(), is(expectedString));
     }
 
 
