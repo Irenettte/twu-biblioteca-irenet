@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -11,13 +13,13 @@ public class Controller {
     }
 
     public void displayBibliotecaMenu(){
-        String menu = "<Biblioteca Menu Options>";
-        String option1 = "<1> List of Books";
-        String optionOut = "<2> Quit Program";
 
-        System.out.println(menu);
-        System.out.println(option1);
-        System.out.println(optionOut);
+        List<String> options = new ArrayList();
+        options.add("<Biblioteca Menu Options>");
+        options.add("<1> List of Books");
+        options.add("<2> Quit Program");
+
+        for (String optionNum : options) { System.out.println(optionNum);}
 
     }
     public void chooseOption() {

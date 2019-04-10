@@ -53,7 +53,26 @@ public class LibraryTest {
 
         library.addBook(book1);
         library.addBook(book2);
-        library.deleteBook(book1);
+        library.checkOutBook(book1);
+        library.displayBookList();
+
+        assertThat(outContent.toString(), is(expectedString));
+
+    }
+    @Test
+    public void shouldReturnBookToListOfAvailableBooks(){
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        Library library = new Library();
+        Book book1 = new Book("The Cat in the Hat", "Dr. Seuss", 1957);
+        Book book2 = new Book("The Metamorphosis", "Franz Kafka", 1915);
+
+        String expectedString = "The Metamorphosis\tFranz Kafka\t1915\nThe Cat in the Hat\tDr. Seuss\t1957\n";
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.checkOutBook(book1);
+        library.returnBook(book1);
         library.displayBookList();
 
         assertThat(outContent.toString(), is(expectedString));

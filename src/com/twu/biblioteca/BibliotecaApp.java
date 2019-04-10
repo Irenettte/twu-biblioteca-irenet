@@ -10,14 +10,7 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
 
         //SET UP
-        Library library = new Library();
-        Book book1 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1954);
-        Book book2 = new Book("The Metamorphosis", "Franz Kafka", 1915);
-        library.addBook(book1);
-        library.addBook(book2);
-
-        Controller control = new Controller(library);
-
+        Controller control = setUp();
 
         control.displayBibliotecaMenu();
         control.chooseOption();
@@ -25,7 +18,17 @@ public class BibliotecaApp {
 
     }
 
-    private static void setUp() {
+    private static Controller setUp() {
+        Library library = new Library();
 
+        Book book1 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1954);
+        Book book2 = new Book("The Metamorphosis", "Franz Kafka", 1915);
+        Book book3 = new Book("The Cat in the Hat", "Dr. Seuss", 1957);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        Controller control = new Controller(library);
+
+        return control;
     }
 }
