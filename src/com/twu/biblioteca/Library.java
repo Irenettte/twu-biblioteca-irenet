@@ -8,15 +8,16 @@ public class Library {
 
     private List<Book> listOfBooksAvailable;
     private List<Book> listOfBooksCheckOut;
+    private List<Movie> listOfMoviesAvailable;
+    private List<Movie> listOfMoviesCheckOut;
 
 
     //constructor
-    public Library(List<Book> listOfBooksAvailable) {
-        this.listOfBooksAvailable = listOfBooksAvailable;
-    }
     public Library(){
         this.listOfBooksAvailable = new ArrayList<Book>();
         this.listOfBooksCheckOut = new ArrayList<Book>();
+        this.listOfMoviesAvailable = new ArrayList<Movie>();
+        this.listOfMoviesCheckOut = new ArrayList<Movie>();
 
     }
 
@@ -28,8 +29,16 @@ public class Library {
     public List<Book> getListOfBooksCheckOut() {
         return listOfBooksCheckOut;
     }
+    public List<Movie> getListOfMoviesAvailable() {
+        return listOfMoviesAvailable;
+    }
 
-    //method to Add Book
+    public List<Movie> getListOfMoviesCheckOut() {
+        return listOfMoviesCheckOut;
+    }
+
+
+    //method for Book
     public void addBook(Book book1){
         listOfBooksAvailable.add(book1);
     }
@@ -48,5 +57,22 @@ public class Library {
 
         for (Book books : listOfBooksAvailable) System.out.println(books.displayTitleAuthorYear());
 
+    }
+
+    //method for Movie
+    public void addMovie(Movie movie){
+        listOfMoviesAvailable.add(movie);
+    }
+    public void checkOutMovie(Movie movie){
+        listOfMoviesCheckOut.add(movie);
+        listOfMoviesAvailable.remove(movie);
+    }
+    public void returnMovie(Movie movie){
+        listOfMoviesAvailable.add(movie);
+        listOfMoviesCheckOut.remove(movie);
+    }
+
+    public void displayMovieList(){
+        for (Movie movie : listOfMoviesAvailable) System.out.println(movie.displayTitleDirectorYearRating());
     }
 }
