@@ -10,6 +10,7 @@ public class Library {
     private List<Book> listOfBooksCheckOut;
     private List<Movie> listOfMoviesAvailable;
     private List<Movie> listOfMoviesCheckOut;
+    private List<User> listOfUsers;
 
 
     //constructor
@@ -18,6 +19,7 @@ public class Library {
         this.listOfBooksCheckOut = new ArrayList<Book>();
         this.listOfMoviesAvailable = new ArrayList<Movie>();
         this.listOfMoviesCheckOut = new ArrayList<Movie>();
+        this.listOfUsers = new ArrayList<User>();
 
     }
 
@@ -35,6 +37,9 @@ public class Library {
 
     public List<Movie> getListOfMoviesCheckOut() {
         return listOfMoviesCheckOut;
+    }
+    public List<User> getListOfUsers() {
+        return listOfUsers;
     }
 
 

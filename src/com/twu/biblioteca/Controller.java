@@ -8,6 +8,7 @@ public class Controller {
 
     //dependencies here and in Constructor
     private Library library;
+    private User user;
 
     public Controller(Library library) {
         this.library = library;
