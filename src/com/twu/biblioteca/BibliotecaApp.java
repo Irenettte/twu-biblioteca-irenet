@@ -14,8 +14,6 @@ public class BibliotecaApp {
 
         control.displayBibliotecaMenu();
         control.chooseOption();
-
-
     }
 
     private static Controller setUp() {
@@ -27,6 +25,11 @@ public class BibliotecaApp {
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
+        Movie movie1 = new Movie("Les Invisibles", "Louis-Julien Petit", 2018, "6.8");
+        Movie movie2 = new Movie("Dracula", "Francis Ford Coppola", 1993, "7.5");
+        library.addMovie(movie1);
+        library.addMovie(movie2);
+
         Controller control = new Controller(library);
 
         return control;

@@ -20,7 +20,10 @@ public class Controller {
         options.add("<1> List of Books");
         options.add("<2> Check out a Book");
         options.add("<3> Return a Book");
-        options.add("<4> Quit Program");
+        options.add("<4> List of Movies");
+        options.add("<5> Check out a Movie");
+        options.add("<6> Return a Movie");
+        options.add("<7> Quit Program");
 
         for (String optionNum : options) { System.out.println(optionNum);}
 
@@ -32,23 +35,42 @@ public class Controller {
         System.out.println(chooseOption);
 
         String option = scanUser.nextLine();
-        if (option.matches("[1-4]")) {
+        if (option.matches("[1-7]")) {
             int optionUser = Integer.parseInt(option);
-            if (optionUser == 1) {
-                library.displayBookList();
-                chooseOption();
-            }
-            else if (optionUser == 2) {
-                userCheckOutBook();
-            }
-            else if (optionUser == 3) {
-                userReturnABook();
+
+            switch (optionUser) {
+                case 1:
+                    library.displayBookList();
+                    displayBibliotecaMenu();
+                    chooseOption();
+                    break;
+
+                case 2:
+                    userCheckOutBook();
+                    break;
+
+                case 3:
+                    userReturnABook();
+                    break;
+
+                case 4:
+                    library.displayMovieList();
+                    displayBibliotecaMenu();
+                    chooseOption();
+                    break;
+
+                case 5:
+                    userCheckOutMovie();
+                    break;
+
+                case 6:
+                    userReturnMovie();
+                    break;
+
+                case 7:
+                    this.exitProgram();
 
             }
-            else if (optionUser == 4) {
-                this.exitProgram();
-            }
-
         } else {
             String invalidOption = "Please select a valid option!";
 
@@ -92,6 +114,7 @@ public class Controller {
             System.out.println("Sorry, that book is not available");
 
         }
+        displayBibliotecaMenu();
         chooseOption();
 
     }
@@ -122,23 +145,83 @@ public class Controller {
             System.out.println("That is not a valid book to return");
 
         }
+        displayBibliotecaMenu();
         chooseOption();
 
     }
+    //  MOVIES
+    public void userCheckOutMovie(){
+        Scanner scanUser = new Scanner(System.in);
+
+        System.out.println("Please input title of the movie you want to checkout: ");
+        String userMovieA = scanUser.nextLine();
+        String userMovie = userMovieA.toLowerCase();
+        int movieFound = 0;
+
+
+        List<Movie> moviesAvailable = library.getListOfMoviesAvailable();
+
+        for (Movie movie : moviesAvailable) {
+            String movieTitle = movie.getTitle();
+
+            if (userMovie.matches(movieTitle.toLowerCase())){
+                movieFound ++;
+                System.out.println("Thank you! Enjoy the movie");
+                library.checkOutMovie(movie);
+                break;
+            }
+
+        }
+        if (movieFound == 0) {
+            System.out.println("Sorry, that movie is not available");
+
+        }
+        displayBibliotecaMenu();
+        chooseOption();
+
+    }
+    public void userReturnMovie(){
+        Scanner scanUser = new Scanner(System.in);
+
+        System.out.println("Please input title of the movie you want to return: ");
+        String userMovieA = scanUser.nextLine();
+        String userMovie = userMovieA.toLowerCase();
+        int movieFound = 0;
+
+        List<Movie> moviesInCheckOut = library.getListOfMoviesCheckOut();
+
+        for (Movie movie : moviesInCheckOut) {
+            String movieTitle = movie.getTitle();
+
+            if (userMovie.matches(movieTitle.toLowerCase())) {
+                movieFound++;
+                library.returnMovie(movie);
+                System.out.println("Thank you for returning the movie");
+                break;
+            }
+        }
+        if (movieFound == 0) {
+            System.out.println("That is not a valid movie to return");
+        }
+        displayBibliotecaMenu();
+        chooseOption();
+
+    }
+
     //just for testing purposes
-    public void mockChooseOption(String option) {
+    public void mockChooseOption(String option, String userBookA) {
 
         if (option.matches("[1-4]")) {
             int optionUser = Integer.parseInt(option);
             if (optionUser == 1) {
                 library.displayBookList();
-                chooseOption();
+//                chooseOption();
             }
             else if (optionUser == 2) {
-                mockUserCheckOutBook();
+                mockUserCheckOutBook(userBookA);
             }
             else if (optionUser == 3) {
-                userReturnABook();
+                mockUserReturnBook(userBookA);
 
             }
             else if (optionUser == 4) {
@@ -152,12 +235,10 @@ public class Controller {
         }
 
     }
-    public void mockUserCheckOutBook(){
+    public void mockUserCheckOutBook(String userBookA){
         int bookFound = 0;
 
         System.out.println("Please input title or author of the book you want to checkout: ");
-
-        String userBookA = "The Cat in the Hat";
         String userBook = userBookA.toLowerCase();
 
 
@@ -182,12 +263,10 @@ public class Controller {
         }
 
     }
-    public void mockUserReturnBook(){
+    public void mockUserReturnBook(String userBookA){
         int bookFound = 0;
 
         System.out.println("Please input title or author of the book you want to checkout: ");
-
-        String userBookA = "blabla";
         String userBook = userBookA.toLowerCase();
 
 
