@@ -20,6 +20,15 @@ public class Library {
 
     }
 
+    //getters
+    public List<Book> getListOfBooksAvailable() {
+        return listOfBooksAvailable;
+    }
+
+    public List<Book> getListOfBooksCheckOut() {
+        return listOfBooksCheckOut;
+    }
+
     //method to Add Book
     public void addBook(Book book1){
         listOfBooksAvailable.add(book1);

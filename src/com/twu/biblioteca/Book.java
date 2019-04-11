@@ -20,13 +20,12 @@ public class Book {
 
 
 //    //getters
-//    public String getBookTitle(){
-//        System.out.print(title);
-//        return title;
-//    }
-//    public String getBookAuthor(){
-//        return author;
-//    }
+    public String getBookTitle(){
+        return title;
+    }
+    public String getBookAuthor(){
+        return author;
+    }
 //    public int getYearPublished(){
 //        return yearPublished;
 //    }
