@@ -24,7 +24,7 @@ public class ControllerTest {
 
         Controller control = new Controller(library);
         control.displayBibliotecaMenu();
-        control.mockChooseOption("1", "Who cares");
+//        control.mockChooseOption("1", "Who cares");
 
         assertThat(outContent.toString(), is(expectedString));
     }
@@ -44,7 +44,7 @@ public class ControllerTest {
 
         Controller control = new Controller(library);
         control.displayBibliotecaMenu();
-        control.mockChooseOption("nine", "Whatever");
+//        control.mockChooseOption("nine", "Whatever");
 
         assertThat(outContent.toString(), is(expectedString));
     }
@@ -63,7 +63,7 @@ public class ControllerTest {
         library.addBook(book2);
         library.addBook(book3);
         Controller control = new Controller(library);
-        control.mockChooseOption("2", "The Cat in the Hat");
+//        control.mockChooseOption("2", "The Cat in the Hat");
 
         assertThat(outContent.toString(), is(expectedString));
 
@@ -84,7 +84,7 @@ public class ControllerTest {
         library.addBook(book3);
 
         Controller control = new Controller(library);
-        control.mockChooseOption("2", "Winnie the Pooh");
+//        control.mockChooseOption("2", "Winnie the Pooh");
 
         assertThat(outContent.toString(), is(expectedString));
 
@@ -105,7 +105,7 @@ public class ControllerTest {
         library.addBook(book3);
 
         Controller control = new Controller(library);
-        control.mockChooseOption("2", "The Cat in the Hat");
+//        control.mockChooseOption("2", "The Cat in the Hat");
         library.displayBookList();
 
         assertThat(outContent.toString(), is(expectedString));
@@ -128,8 +128,35 @@ public class ControllerTest {
         library.checkOutBook(book2);
 
         Controller control = new Controller(library);
-        control.mockChooseOption("3", "The Metamorphosis");
+//        control.mockChooseOption("3", "The Metamorphosis");
         library.displayBookList();
+
+        assertThat(outContent.toString(), is(expectedString));
+    }
+
+    //User LogIn to checkout book
+    @Test
+    public void shouldLogInUser0AndCheckOutBookForUser0(){
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        String expectedString = "You successfully logged in! Welcome back Gloria Steinem\n\nYou checked out these books: \nThank you! Enjoy the book\nList of Available Books: \nThe Lord of the Rings\tJ.R.R. Tolkien\t1954\nThe Cat in the Hat\tDr. Seuss\t1957\nList of Book(s) checked out by user Gloria Steinem: \nThe Metamorphosis\tFranz Kafka\t1915\n";
+
+        Library library = new Library();
+
+        Book book1 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1954);
+        Book book2 = new Book("The Metamorphosis", "Franz Kafka", 1915);
+        Book book3 = new Book("The Cat in the Hat", "Dr. Seuss", 1957);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445");
+
+        library.addUser(user0);
+        library.addUser(user1);
+
+        Controller control = new Controller(library);
+        control.mockChooseOption("2", "The Metamorphosis", user0);
 
         assertThat(outContent.toString(), is(expectedString));
     }

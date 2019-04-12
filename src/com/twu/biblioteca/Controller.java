@@ -211,7 +211,7 @@ public class Controller {
     }
 
     //just for testing purposes
-    public void mockChooseOption(String option, String userBookA) {
+    public void mockChooseOption(String option, String userBookA, User user) {
 
         if (option.matches("[1-4]")) {
             int optionUser = Integer.parseInt(option);
@@ -220,7 +220,7 @@ public class Controller {
 //                chooseOption();
             }
             else if (optionUser == 2) {
-                mockUserCheckOutBook(userBookA);
+                mockUserCheckOutBook(userBookA, user);
             }
             else if (optionUser == 3) {
                 mockUserReturnBook(userBookA);
@@ -237,13 +237,10 @@ public class Controller {
         }
 
     }
-    public void mockUserCheckOutBook(String userBookA){
+    public void mockUserCheckOutBook(String userBookA, User user){
         int bookFound = 0;
-
-        System.out.println("Please input title or author of the book you want to checkout: ");
+        library.mockUserLogIn(user);
         String userBook = userBookA.toLowerCase();
-
-
         List<Book> booksAvailable = library.getListOfBooksAvailable();
 
         for (Book book : booksAvailable) {
@@ -252,17 +249,19 @@ public class Controller {
 
             if (userBook.matches(bookTitle.toLowerCase()) || userBook.matches(bookAuthor)){
                 bookFound ++;
+                user.addBookInListUser(book);
                 System.out.println("Thank you! Enjoy the book");
                 library.checkOutBook(book);
                 break;
-
-
             }
-
         }
         if (bookFound == 0) {
             System.out.println("Sorry, that book is not available");
         }
+        System.out.println("List of Available Books: ");
+        library.displayBookList();
+        System.out.println("List of Book(s) checked out by user " +user.getUserFullName() +": ");
+        user.displayBooksCheckOutUser();
 
     }
     public void mockUserReturnBook(String userBookA){

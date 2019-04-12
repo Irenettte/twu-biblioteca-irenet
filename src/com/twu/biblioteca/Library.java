@@ -121,10 +121,6 @@ public class Library {
         if (pwd.matches(userPass)) {
             System.out.println("You successfully logged in! Welcome back " + user0.getUserFullName());
             System.out.println();
-            System.out.println("You checked out these books: ");
-            for (Book book : user0.getListBooksCheckoutUser()) {
-                System.out.println(book.displayTitleAuthorYear());
-            }
         } else{
             System.out.println("Incorrect password, please log in again: ");
             userLogIn();
@@ -135,7 +131,7 @@ public class Library {
     //Mock tests
     public User mockUserLogIn (User user0) {
 
-        String userInputNum = "000-0000";
+        String userInputNum = "000-0001";
         String userPass = "biblioteca0";
 
 

@@ -40,6 +40,9 @@ public class User {
     public List<Book> getListBooksCheckoutUser() {
         return listBooksCheckoutUser;
     }
+    public void displayBooksCheckOutUser(){
+        for (Book book : listBooksCheckoutUser) System.out.println(book.displayTitleAuthorYear());
+    }
 
     // add Books in list of books
     public void addBookInListUser(Book book){
@@ -52,16 +55,6 @@ public class User {
     public void displayUserInfo() {
 
         System.out.println("Welcome user " + userNumber+ "\n" + userFullName + "\n" + userEmail + "\n" + userPhoneNumber);
-    }
-    public void userNumberInList (String user){
-
-//        if (! userNumberInList(user)) {
-//            System.out.println("Incorrect user number, please enter a correct one.");
-//            System.out.println(userTxt);
-//            user = scanUser.nextLine();
-//        }
-//        return userNumber.equals(user);
-
     }
 
 }
