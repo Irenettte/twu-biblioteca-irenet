@@ -101,6 +101,26 @@ public class LibraryTestMovie {
         assertThat(outContent.toString(), is(expectedString));
     }
 
+    @Test
+    public void shouldDisplayUserInformationWhenLoggedIn(){
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        Library library = new Library();
+        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445");
+        User user2 = new User("000-0003", "biblioteca2", "Dorcas Muthoni", "dorcas@gmail.com", "938713445");
+
+        library.addUser(user0);
+        library.addUser(user1);
+        library.addUser(user2);
+
+        library.mockUserLogIn(user0);
+        String expectedString = "You successfully logged in! Welcome back Gloria Steinem\n\nFull name: Gloria Steinem\nemail: gloria@gmail.com\nTelephone: 938713445\n";
+
+        assertThat(outContent.toString(), is(expectedString));
+
+    }
+
 
 
 }

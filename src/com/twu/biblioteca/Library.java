@@ -121,6 +121,7 @@ public class Library {
         if (pwd.matches(userPass)) {
             System.out.println("You successfully logged in! Welcome back " + user0.getUserFullName());
             System.out.println();
+            user0.displayUserInfo();
         } else{
             System.out.println("Incorrect password, please log in again: ");
             userLogIn();
@@ -167,10 +168,11 @@ public class Library {
         if (pwd.matches(userPass)) {
             System.out.println("You successfully logged in! Welcome back " + user1.getUserFullName());
             System.out.println();
-            System.out.println("You checked out these books: ");
-            for (Book book : user1.getListBooksCheckoutUser()) {
-                System.out.println(book.displayTitleAuthorYear());
-            }
+            user1.displayUserInfo();
+//            System.out.println("You checked out these books: ");
+//            for (Book book : user1.getListBooksCheckoutUser()) {
+//                System.out.println(book.displayTitleAuthorYear());
+//            }
         } else{
             System.out.println("Incorrect password, please log in again: ");
             userLogIn();

@@ -54,7 +54,7 @@ public class User {
 
     public void displayUserInfo() {
 
-        System.out.println("Welcome user " + userNumber+ "\n" + userFullName + "\n" + userEmail + "\n" + userPhoneNumber);
+        System.out.println("Full name: "+userFullName + "\nemail: " + userEmail + "\nTelephone: " + userPhoneNumber);
     }
 
 }
