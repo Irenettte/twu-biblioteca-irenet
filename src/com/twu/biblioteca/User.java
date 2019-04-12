@@ -22,34 +22,24 @@ public class User {
         this.listBooksCheckoutUser = listBooksCheckoutUser;
     }
 
-    //user log in account
-    public void userLogIn (User user0) {
-        String userTxt = "User: ";
-        String userPwd = "Password: ";
-        String userNum = "000-0001";
-        String userPass = "biblioteca0";
-//        Scanner scanUser = new Scanner(System.in);
+    //getters
 
-//        System.out.println(userTxt);
-//        String userNum = scanUser.nextLine();
-
-//        while (!userNumber.equals(userNum)){
-//            System.out.println("Incorrect user number, please insert a valid one: ");
-//            userNum = scanUser.nextLine();
-//        }
-//        System.out.println(userPwd);
-//        String userPass = scanUser.nextLine();
-//        while (!pwd.equals(userPass)){
-//            System.out.println("Incorrect user number, please insert a valid one: ");
-//            userPass = scanUser.nextLine();
-//        }
-        System.out.println("You successfully logged in! Welcome back " + userFullName);
-        System.out.println();
-        System.out.println("You checked out this books: ");
-        for (Book book : listBooksCheckoutUser) { System.out.println(book.displayTitleAuthorYear());}
-
-
+    public String getUserNumber() {
+        return userNumber;
     }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public List<Book> getListBooksCheckoutUser() {
+        return listBooksCheckoutUser;
+    }
+
     public void displayUserInfo() {
 
         System.out.println("Welcome user " + userNumber+ "\n" + userFullName + "\n" + userEmail + "\n" + userPhoneNumber);
@@ -64,4 +54,5 @@ public class User {
 //        return userNumber.equals(user);
 
     }
+
 }
