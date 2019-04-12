@@ -89,47 +89,97 @@ public class Library {
         listOfUsers.add(user);
     }
     //user log in account
-    public void userLogIn () {
+    public User userLogIn () {
         String userTxt = "User: ";
         String userPwd = "Password: ";
         Scanner scanUser = new Scanner(System.in);
 
         System.out.println(userTxt);
         String userInputNum = scanUser.nextLine();
-
+        int userFound = 0;
+        User user0 = null;
         for (User user : listOfUsers) {
 
             String userNumber = user.getUserNumber();
-            String pwd = user.getPwd();
 
-            while (!userNumber.equals(userInputNum)) {
-                System.out.println("Incorrect user number, please insert a valid one: ");
-                userInputNum = scanUser.nextLine();
-            }
-            System.out.println(userPwd);
-            String userPass = scanUser.nextLine();
-            while (!pwd.equals(userPass)) {
-                System.out.println("Incorrect user number, please insert a valid one: ");
-                userPass = scanUser.nextLine();
+            if (userNumber.matches(userInputNum)) {
+                user0 = user;
+                userFound++;
+                break;
             }
         }
-//        System.out.println("You successfully logged in! Welcome back " + userFullName);
-        System.out.println();
-        System.out.println("You checked out these books: ");
-//        for (Book book : listBooksCheckoutUser) { System.out.println(book.displayTitleAuthorYear());}
+        if (userFound == 0) {
+            System.out.println("Incorrect user number, please insert a valid one: ");
+            userLogIn();
+        }
+        String pwd = user0.getPwd();
 
+        System.out.println(userPwd);
+        String userPass = scanUser.nextLine();
+
+
+        if (pwd.matches(userPass)) {
+            System.out.println("You successfully logged in! Welcome back " + user0.getUserFullName());
+            System.out.println();
+            System.out.println("You checked out these books: ");
+            for (Book book : user0.getListBooksCheckoutUser()) {
+                System.out.println(book.displayTitleAuthorYear());
+            }
+        } else{
+            System.out.println("Incorrect password, please log in again: ");
+            userLogIn();
+        }
+        return user0;
 
     }
     //Mock tests
-    public void mockUserLogIn (User user0) {
+    public User mockUserLogIn (User user0) {
 
-        String userNum = "000-0001";
+        String userInputNum = "000-0000";
         String userPass = "biblioteca0";
 
-        System.out.println("You successfully logged in! Welcome back " + user0.getUserFullName());
-        System.out.println();
-        System.out.println("You checked out this books: ");
-        for (Book book : user0.getListBooksCheckoutUser()) { System.out.println(book.displayTitleAuthorYear());}
+
+        int userFound = 0;
+        User user1 = null;
+        for (User user : listOfUsers) {
+
+            String userNumber = user.getUserNumber();
+
+            if (userNumber.matches(userInputNum)) {
+                user1 = user0;
+                userFound++;
+                break;
+            }
+        }
+        if (userFound == 0) {
+            System.out.println("Incorrect user number, please insert a valid one: ");
+            userInputNum = "000-0001";
+            userFound = 0;
+            for (User user : listOfUsers) {
+
+                String userNumber = user.getUserNumber();
+
+                if (userNumber.matches(userInputNum)) {
+                    user1 = user0;
+                    userFound++;
+                    break;
+                }
+            }
+        }
+        String pwd = user1.getPwd();
+
+        if (pwd.matches(userPass)) {
+            System.out.println("You successfully logged in! Welcome back " + user1.getUserFullName());
+            System.out.println();
+            System.out.println("You checked out these books: ");
+            for (Book book : user1.getListBooksCheckoutUser()) {
+                System.out.println(book.displayTitleAuthorYear());
+            }
+        } else{
+            System.out.println("Incorrect password, please log in again: ");
+            userLogIn();
+        }
+        return user1;
 
     }
 }

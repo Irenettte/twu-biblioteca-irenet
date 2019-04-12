@@ -66,13 +66,37 @@ public class LibraryTestMovie {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         Library library = new Library();
-        Book book = new Book("Romeo and Juliet", "Shakespeare", 1597);
-        List<Book> listOfBooks = new ArrayList<Book>();
-        listOfBooks.add(book);
-        User user = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445", listOfBooks);
+        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445");
+        User user2 = new User("000-0003", "biblioteca2", "Dorcas Muthoni", "dorcas@gmail.com", "938713445");
+
+        library.addUser(user0);
+        library.addUser(user1);
+        library.addUser(user2);
+
+        User user = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
         library.mockUserLogIn(user);
 
-        String expectedString = "You successfully logged in! Welcome back Gloria Steinem\n\nYou checked out this books: \nRomeo and Juliet\tShakespeare\t1597\n";
+        String expectedString = "You successfully logged in! Welcome back Gloria Steinem\n\nYou checked out these books: \n";
+
+        assertThat(outContent.toString(), is(expectedString));
+    }
+    @Test
+    public void shouldDisplayIncorrectUserWhenNotInputCorrectOneAndLogInIntoOwnAccountWhenInputCorrectUserAndPwd(){
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        Library library = new Library();
+        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445");
+        User user2 = new User("000-0003", "biblioteca2", "Dorcas Muthoni", "dorcas@gmail.com", "938713445");
+
+        library.addUser(user0);
+        library.addUser(user1);
+        library.addUser(user2);
+
+        User user = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        library.mockUserLogIn(user);
+        String expectedString = "Incorrect user number, please insert a valid one: \nYou successfully logged in! Welcome back Gloria Steinem\n\nYou checked out these books: \n";
 
         assertThat(outContent.toString(), is(expectedString));
     }

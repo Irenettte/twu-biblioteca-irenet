@@ -13,13 +13,14 @@ public class User {
     private String userPhoneNumber;
     private List<Book> listBooksCheckoutUser;
 
-    public User(String userNumber, String pwd, String userFullName, String userEmail, String userPhoneNumber, List<Book> listBooksCheckoutUser) {
+
+    public User(String userNumber, String pwd, String userFullName, String userEmail, String userPhoneNumber) {
         this.userNumber = userNumber;
         this.pwd = pwd;
         this.userFullName = userFullName;
         this.userEmail = userEmail;
         this.userPhoneNumber = userPhoneNumber;
-        this.listBooksCheckoutUser = listBooksCheckoutUser;
+        this.listBooksCheckoutUser = new ArrayList<Book>();
     }
 
     //getters
@@ -38,6 +39,14 @@ public class User {
 
     public List<Book> getListBooksCheckoutUser() {
         return listBooksCheckoutUser;
+    }
+
+    // add Books in list of books
+    public void addBookInListUser(Book book){
+        listBooksCheckoutUser.add(book);
+    }
+    public void returnBookInListUser(Book book){
+        listBooksCheckoutUser.remove(book);
     }
 
     public void displayUserInfo() {

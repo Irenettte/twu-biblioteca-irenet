@@ -87,6 +87,7 @@ public class Controller {
     }
     public void userCheckOutBook(){
         Scanner scanUser = new Scanner(System.in);
+        User user = library.userLogIn();
 
         System.out.println("Please input title or author of the book you want to checkout: ");
         String userBookA = scanUser.nextLine();
@@ -103,9 +104,9 @@ public class Controller {
             if (userBook.matches(bookTitle.toLowerCase()) || userBook.matches(bookAuthor)){
                 bookFound ++;
                 System.out.println("Thank you! Enjoy the book");
+                user.addBookInListUser(book);
                 library.checkOutBook(book);
                 break;
-
 
             }
 
@@ -121,6 +122,7 @@ public class Controller {
 
     public void userReturnABook(){
         Scanner scanUser = new Scanner(System.in);
+        User user = library.userLogIn();
 
         System.out.println("Please input title or author of the book you want to return: ");
         String userBookA = scanUser.nextLine();
@@ -136,9 +138,9 @@ public class Controller {
             if (userBook.matches(bookTitle.toLowerCase()) || userBook.matches(bookAuthor)) {
                 bookFound++;
                 library.returnBook(book);
+                user.returnBookInListUser(book);
                 System.out.println("Thank you for returning the book");
                 break;
-
             }
         }
         if (bookFound == 0) {

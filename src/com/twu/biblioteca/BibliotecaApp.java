@@ -11,7 +11,6 @@ public class BibliotecaApp {
 
         //SET UP
         Controller control = setUp();
-
         control.displayBibliotecaMenu();
         control.chooseOption();
     }
@@ -29,17 +28,10 @@ public class BibliotecaApp {
         Movie movie2 = new Movie("Dracula", "Francis Ford Coppola", 1993, "7.5");
         library.addMovie(movie1);
         library.addMovie(movie2);
-        List<Book> listOfBooksUser0 = new ArrayList<Book>();
-        List<Book> listOfBooksUser1 = new ArrayList<Book>();
-        List<Book> listOfBooksUser2 = new ArrayList<Book>();
 
-        listOfBooksUser0.add(book1);
-        listOfBooksUser2.add(book3);
-
-
-        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445", listOfBooksUser0);
-        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445", listOfBooksUser1);
-        User user2 = new User("000-0003", "biblioteca2", "Dorcas Muthoni", "dorcas@gmail.com", "938713445", listOfBooksUser2);
+        User user0 = new User("000-0001", "biblioteca0", "Gloria Steinem", "gloria@gmail.com", "938713445");
+        User user1 = new User("000-0002", "biblioteca1", "Margaret Hamilton", "margaret@gmail.com", "938713445");
+        User user2 = new User("000-0003", "biblioteca2", "Dorcas Muthoni", "dorcas@gmail.com", "938713445");
 
         library.addUser(user0);
         library.addUser(user1);
