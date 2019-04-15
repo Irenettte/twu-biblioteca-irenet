@@ -1,0 +1,14 @@
+Question 1. Who checked out the book The Hobbit? 
+
+- Answer: Anand Beck 
+- Code: 
+SELECT member.name FROM member WHERE member.id IN (
+   ...> SELECT checkout_item.member_id
+   ...> FROM checkout_item, member, book
+   ...> WHERE checkout_item.book_id = book.id AND book.title = "The Hobbit");
+
+Question 2. How many people have not checked out anything?
+
+- Answer: 37. 
+- Code: 
+ 
